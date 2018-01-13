@@ -1,0 +1,11 @@
+name: NoDropItem
+version: 1.0
+description: NoDropItem
+author: judgetread
+authors: [judgetread] 
+website: http://github.com/NoDropItem
+main: main.java.com.github.judgetread.NoDropItem.NoDropItem
+commands:
+   nodropitem:
+      description: Item saves players inventory on death.
+      aliases: [ndi]

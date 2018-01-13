@@ -1,0 +1,99 @@
+Settings:
+  # Enable or Disable usage of ndi.
+  Enabled: true
+  # When a player dies with this item in inventory, should this item be consumed.
+  # If multiple items are found it will remove onlt one of the items.
+  Consume Item: true
+  
+  # Settings related to how the item looks.
+  Item:
+    # The material of the item.
+    Material: 'END_CRYSTAL'
+    # Size of the item stack. 
+    Amount: 1
+    # The Display name of the item.
+    Display Name: '&No &5Drop &8Item'
+    # The lore text of the item.
+    Lore:
+    - '&e+------------+'
+    - '&2Whilst you have this item in your inventory.'
+    - '&2You are safe from loosing your inventory contents'
+    - '&2If you should happen to meet your maker.'
+    - '&cItem is consumed on usage.'
+    - '&e+------------+'
+
+  # Settings related to crafting.
+  Crafting:
+    # Enable or disable crafting of items.
+    # True allows players to craft this item for them selfs.
+    # False means, item is only attainable from the /ndi give <playername> command.
+    Is Craftable: true
+    # Pattern and items used to craft the item.
+    # Top is the top row of a crafting table
+    # Middle is the Middle row of a crafting table
+    # Bottom is the Bottom row of a crafting table
+    # Use 'AIR' if no item in that slot is required.
+    Crafting Pattern:
+      TopLeft: 'DIAMOND'
+      TopMiddle: 'DIAMOND'
+      TopRight: 'DIAMOND'
+      MiddleLeft: 'DIAMOND'
+      Middle: 'END_CRYSTAL'
+      MiddleRight: 'DIAMOND'
+      BottomLeft: 'DIAMOND'
+      BottomMiddle: 'DIAMOND'
+      BottomRight: 'DIAMOND'
+      
+  # Settings related to sounds
+  Sounds:
+    # Enabled this sound or not.
+    # Play a sound to the player on respawn, if their inventory
+    # was saved because they had a NoDropItem.
+    Enabled: true
+    # Sound file to play.
+    # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+    Sound: 'ENTITY_GHAST_SCREAM'
+    # Volume of the playing sound.
+    Volume: 10F
+    # Pitch of playing sound
+    Pitch: 1F
+     
+  # Settings related to chat messages.
+  Chat:
+    # Enable or disable sending of chat messages..
+    Enabled: true
+    # Message to send to player's chat when they respawn.
+    # And their inventory was restored due to having the item
+    # in the inventory.
+    Usage Message:
+    - ' +---------------------+ '
+    - ' Phew... That was lucky... '
+    - ' Because you had a NoDropItem in your inventory, your inventory was saved. '
+    - ' +---------------------+ '
+    # Messages related to command usage.
+    Command Messages:
+      # Message sent to the player receiving the item.
+      ReceiverCompleted: '&aYou just received a NoDropITem. Lucky you!.'
+      # Message sent to the player using the command, if command was completed..
+      SenderCompleted: '&aGiving of NoDropItem completed.'
+      # Message sent to the player using command, if command failed because receivers inventory was full.
+      SenderInventoryFull: '&cGive failed. Players inventory is full.'
+      # Message sent to the player using command, if command failed because receiver is not online.
+      SenderPlayerNotOnline: '&cGive failed. Player is not online.'
+      # Message sent to the player using command, if command failed because the receiver was not found.
+      SenderNoPlayerFound: '&cGive failed. No such player was found.'
+      # Message sent to the player using command, if command is unknown.
+      SenderUnknowCommand: '&cUnknown command'
+      # Message sent to the player using command, if command failed because of wrong usage.
+      SenderInvalidUsage: '&cInvalid command usage. /sdi give <playername>'
+      # Message sent to the player using command, if command failed because sender dont have permission to do so.
+      SenderNoPermission: '&cYou dont have permission'
+    
+    
+    
+    
+    
+    
+    
+    
+    
