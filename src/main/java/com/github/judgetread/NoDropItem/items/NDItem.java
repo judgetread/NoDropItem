@@ -1,5 +1,6 @@
 package main.java.com.github.judgetread.NoDropItem.items;
 
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -10,17 +11,20 @@ public class NDItem {
 
 	private static NDItem instance;
 	private ItemStack itemStack;
+	private ItemMeta itemMeta;
 
 	private NDItem() {
-		ItemMeta itemMeta;
 		this.itemStack = new ItemStack(Config.getInstance().getItemMaterial());
 		this.itemStack.setAmount(Config.getInstance().getItemAmount());
 		
-		itemMeta = this.itemStack.getItemMeta();
-		itemMeta.setDisplayName(StrUtils.convertText(Config.getInstance().getItemDisplayName()));
-		itemMeta.setLore(StrUtils.convertText(Config.getInstance().getItemLore()));
+		this.itemMeta = this.itemStack.getItemMeta();
+		this.itemMeta.setDisplayName(StrUtils.convertText(Config.getInstance().getItemDisplayName()));
+		this.itemMeta.setLore(StrUtils.convertText(Config.getInstance().getItemLore()));
+		
+		for(ItemFlag f :ItemFlag.values()) { itemMeta.addItemFlags(f);}
 		
 		this.itemStack.setItemMeta(itemMeta);
+		
 	}
 
 	public static NDItem getInstance() {
