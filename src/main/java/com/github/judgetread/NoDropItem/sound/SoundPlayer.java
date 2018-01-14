@@ -16,8 +16,8 @@ public class SoundPlayer {
 	private SoundPlayer() {
 		this.enabled = Config.getInstance().getSoundEnabled();
 		this.sound = Config.getInstance().getSound();
-		this.volume = Float.valueOf(Config.getInstance().getSoundVolume());
-		this.pitch = Float.valueOf(Config.getInstance().getSoundPitch());
+		this.volume = Config.getInstance().getSoundVolume();
+		this.pitch = Config.getInstance().getSoundPitch();
 	}
 
 	public static SoundPlayer getInstance() {

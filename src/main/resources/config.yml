@@ -12,15 +12,15 @@ Settings:
     # Size of the item stack. 
     Amount: 1
     # The Display name of the item.
-    Display Name: '&No &5Drop &8Item'
+    Display Name: '&CNo &5Drop &8Item'
     # The lore text of the item.
     Lore:
-    - '&e+------------+'
+    - '&e+------------------------------------------------+'
     - '&2Whilst you have this item in your inventory.'
     - '&2You are safe from loosing your inventory contents'
     - '&2If you should happen to meet your maker.'
     - '&cItem is consumed on usage.'
-    - '&e+------------+'
+    - '&e+------------------------------------------------+'
 
   # Settings related to crafting.
   Crafting:
@@ -54,9 +54,9 @@ Settings:
     # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
     Sound: 'ENTITY_GHAST_SCREAM'
     # Volume of the playing sound.
-    Volume: 10F
+    Volume: 1.0f
     # Pitch of playing sound
-    Pitch: 1F
+    Pitch: 1.0f
      
   # Settings related to chat messages.
   Chat:
@@ -66,16 +66,16 @@ Settings:
     # And their inventory was restored due to having the item
     # in the inventory.
     Usage Message:
-    - ' +---------------------+ '
-    - ' Phew... That was lucky... '
-    - ' Because you had a NoDropItem in your inventory, your inventory was saved. '
-    - ' +---------------------+ '
+    - ' &5+---------------------------------------------------+'
+    - ' &3Phew... That was lucky... '
+    - ' &eYou had a &CNo &5Drop &8Item &ein your inventory, your inventory was saved.'
+    - ' &5+---------------------------------------------------+'
     # Messages related to command usage.
     Command Messages:
       # Message sent to the player receiving the item.
-      ReceiverCompleted: '&aYou just received a NoDropITem. Lucky you!.'
+      ReceiverCompleted: '&aYou just received a &CNo &5Drop &8Item. &aLucky you!.'
       # Message sent to the player using the command, if command was completed..
-      SenderCompleted: '&aGiving of NoDropItem completed.'
+      SenderCompleted: '&aGiving of &CNo &5Drop &8Item &acompleted.'
       # Message sent to the player using command, if command failed because receivers inventory was full.
       SenderInventoryFull: '&cGive failed. Players inventory is full.'
       # Message sent to the player using command, if command failed because receiver is not online.
@@ -85,7 +85,7 @@ Settings:
       # Message sent to the player using command, if command is unknown.
       SenderUnknowCommand: '&cUnknown command'
       # Message sent to the player using command, if command failed because of wrong usage.
-      SenderInvalidUsage: '&cInvalid command usage. /sdi give <playername>'
+      SenderInvalidUsage: '&cInvalid command usage. /ndi give <playername>'
       # Message sent to the player using command, if command failed because sender dont have permission to do so.
       SenderNoPermission: '&cYou dont have permission'
     

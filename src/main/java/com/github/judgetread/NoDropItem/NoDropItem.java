@@ -20,7 +20,7 @@ public class NoDropItem extends JavaPlugin {
 
 	private static NoDropItem instance;
 	public boolean noErrorsInConfigFiles = true;
-	private List<UUID> sdiMessagePlayer = new ArrayList<UUID>();
+	private List<UUID> sdiMessagePlayer;
 
 	@Override
 	public void onEnable() {
@@ -30,14 +30,20 @@ public class NoDropItem extends JavaPlugin {
 		if (!noErrorsInConfigFiles) {
 			return;
 		}
-
+		
 		if (Config.getInstance().getEnabled()) {
+			sdiMessagePlayer = new ArrayList<UUID>();
 			SoundPlayer.getInstance();
 			NDRecipe.getInstance();
 			CommandManager.getInstance();
 			Bukkit.getPluginManager().registerEvents(new NoDropItemListener(), this);
 		}
 
+	}
+
+	@Override
+	public void onDisable() {
+		super.onDisable();
 	}
 
 	public static NoDropItem getInstance() {
