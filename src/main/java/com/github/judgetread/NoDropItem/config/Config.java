@@ -72,6 +72,8 @@ public class Config extends AutoUpdateConfigLoader {
 	
 
 	public Boolean getEnabled() { return config.getBoolean("Settings.Enabled", true);}
+	public Boolean getRestoreInventory() { return config.getBoolean("Settings.Keep Inventory", true);}
+	public Boolean getRestoreXPLevels() { return config.getBoolean("Settings.Keep XP Levels", true);}
 	public Boolean getConsumeItem() { return config.getBoolean("Settings.Consume Item", true);}
 
 	public Boolean getChatEnabled() { return config.getBoolean("Settings.Chat.Enabled");}

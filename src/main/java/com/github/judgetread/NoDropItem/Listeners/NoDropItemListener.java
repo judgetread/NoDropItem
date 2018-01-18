@@ -18,7 +18,7 @@ import main.java.com.github.judgetread.NoDropItem.utils.StrUtils;
 public class NoDropItemListener implements Listener {
 
 	private static NoDropItem plugin = NoDropItem.getInstance();
-	
+
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event) {
 		if ((event.getEntity() instanceof Player)) {
@@ -30,17 +30,23 @@ public class NoDropItemListener implements Listener {
 				if (inventoryItem != null && inventoryItem.isSimilar(NDItem.getInstance().getSdiItemStack())) {
 
 					if (Config.getInstance().getConsumeItem()) {
-						
+
 						inventoryItem.setAmount(inventoryItem.getAmount() - 1);
 
 						if (inventoryItem.getAmount() < 1) {
 							inventoryItem.setType(Material.AIR);
 						}
-						
+
 						player.getInventory().setItem(i, inventoryItem);
+
+					}
+					if (Config.getInstance().getRestoreInventory()) {
+						event.setKeepInventory(true);
+					}
+					if (Config.getInstance().getRestoreXPLevels()) {
+						event.setKeepLevel(true);
 					}
 
-					event.setKeepInventory(true);
 					plugin.getSdiMessagePlayer().add(player.getUniqueId());
 					break;
 				}
@@ -48,7 +54,7 @@ public class NoDropItemListener implements Listener {
 
 		}
 	}
-	
+
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent e) {
 		Player player = (Player) e.getPlayer();
@@ -62,7 +68,7 @@ public class NoDropItemListener implements Listener {
 					player.sendMessage(StrUtils.convertText(str));
 				}
 			}
-			
+
 			SoundPlayer.getInstance().playSound(player);
 		}
 
@@ -76,6 +82,5 @@ public class NoDropItemListener implements Listener {
 			}
 		}
 	}
-	
 
 }

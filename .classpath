@@ -21,5 +21,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/judge/git/bukkit/target/bukkit-18w02a-R0.1-SNAPSHOT-shaded.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

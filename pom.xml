@@ -2,7 +2,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.judgetread</groupId>
   <artifactId>NoDropItem</artifactId>
-  <version>0.1</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -31,4 +30,5 @@
            <scope>provided</scope>
     </dependency>
 </dependencies>
+	<version>0.2</version>
 </project>

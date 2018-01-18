@@ -1,8 +1,18 @@
 Settings:
+  # Color Codes & Unicodes can be used for all text.
+  # Example. \u00A7b\u00A7m\u00A7l---\u00A7r\u00A78\u00A7m\u00A7l[--\u00A7r \u00A7aNo Drop \u00A72Item \u00A7r\u00A78\u00A7m\u00A7l--]\u00A7b\u00A7m\u00A7l---
+  # Example. &b&m&l---&r&8&m&l[--&r &aNo Drop &2Item &r&8&m&l--]&b&m&l---
+  
   # Enable or Disable usage of ndi.
   Enabled: true
+  # When a player dies with this item in inventory,
+  # Should the players inventory be restored?
+  Keep Inventory: true
+  # When a player dies with this item in inventory,
+  # Should the players XP level to restored?
+  Keep XP Levels: true
   # When a player dies with this item in inventory, should this item be consumed.
-  # If multiple items are found it will remove onlt one of the items.
+  # If multiple items are found it will remove only one of the items.
   Consume Item: true
   
   # Settings related to how the item looks.
@@ -11,24 +21,25 @@ Settings:
     Material: 'END_CRYSTAL'
     # Size of the item stack. 
     Amount: 1
-    # The Display name of the item.
-    Display Name: '&CNo &5Drop &8Item'
+    # The Display name of the item. 
+    Display Name: '&b&m&l-----&r&8&m&l[--&r &aNo Drop &2Item &r&8&m&l--]&b&m&l-----'
     # The lore text of the item.
     Lore:
-    - '&e+------------------------------------------------+'
-    - '&2Whilst you have this item in your inventory.'
-    - '&2You are safe from loosing your inventory contents'
-    - '&2If you should happen to meet your maker.'
+    - '&bWhilst you have this item in your inventory.'
+    - '&bYou are safe from loosing your inventory contents'
+    - '&bIf you should happen to meet your maker.'
     - '&cItem is consumed on usage.'
-    - '&e+------------------------------------------------+'
+    - '&b&m&l--------------------------'
 
   # Settings related to crafting.
   Crafting:
     # Enable or disable crafting of items.
-    # True allows players to craft this item for them selfs.
+    # True allows players to craft this item.
     # False means, item is only attainable from the /ndi give <playername> command.
     Is Craftable: true
     # Pattern and items used to craft the item.
+    # Item names can be found @
+    # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
     # Top is the top row of a crafting table
     # Middle is the Middle row of a crafting table
     # Bottom is the Bottom row of a crafting table
@@ -66,16 +77,16 @@ Settings:
     # And their inventory was restored due to having the item
     # in the inventory.
     Usage Message:
-    - ' &5+---------------------------------------------------+'
-    - ' &3Phew... That was lucky... '
-    - ' &eYou had a &CNo &5Drop &8Item &ein your inventory, your inventory was saved.'
-    - ' &5+---------------------------------------------------+'
+    - '&b&m&l----------------------------------'
+    - ' &ePhew... That was lucky... '
+    - ' &eYou had a &aNo Drop &2Item &ein your inventory, your inventory was saved.'
+    - '&b&m&l----------------------------------'
     # Messages related to command usage.
     Command Messages:
       # Message sent to the player receiving the item.
-      ReceiverCompleted: '&aYou just received a &CNo &5Drop &8Item. &aLucky you!.'
+      ReceiverCompleted: '&aYou just received a &aNo Drop &2Item. &aLucky you!.'
       # Message sent to the player using the command, if command was completed..
-      SenderCompleted: '&aGiving of &CNo &5Drop &8Item &acompleted.'
+      SenderCompleted: '&aGiving of &aNo Drop &2Item &acompleted.'
       # Message sent to the player using command, if command failed because receivers inventory was full.
       SenderInventoryFull: '&cGive failed. Players inventory is full.'
       # Message sent to the player using command, if command failed because receiver is not online.
