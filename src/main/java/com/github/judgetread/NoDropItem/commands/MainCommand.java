@@ -12,47 +12,71 @@ import main.java.com.github.judgetread.NoDropItem.utils.StrUtils;
 
 public class MainCommand implements CommandExecutor {
 
-	@Override
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    private final Config config;
 
-		if (args.length >= 2) {
+    /**
+     * Constructor.
+     */
+    public MainCommand() {
+        this.config = Config.getInstance();
+    }
 
-			switch (args[0].toUpperCase()) {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-			case "GIVE":
+        if (args.length >= 2) {
 
-				if (sender.hasPermission("nodropitem.give")) {
-					if (Bukkit.getPlayer(args[1]) != null) {
-						Player reciever = Bukkit.getPlayer(args[1]);
-						if (reciever.isOnline()) {
-							if (reciever.getInventory().firstEmpty() > -1) {
-								reciever.getInventory().addItem(NDItem.getInstance().getSdiItemStack());
-								sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderCompleted()));
-								reciever.sendMessage(StrUtils.convertText(Config.getInstance().getReceiverCompleted()));
-								break;
-							} else {
-								sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderInventoryFull()));
-								break;
-							}
-						} else {
-							sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderPlayerNotOnline()));
-							break;
-						}
-					} else {
-						sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderNoPlayerFound()));
-						break;
-					}
-				} else {
-					sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderNoPermission()));
-					break;
-				}
-			default:
-				sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderUnknowCommand()));
-				break;
-			}
-		} else {
-			sender.sendMessage(StrUtils.convertText(Config.getInstance().getSenderInvalidUsage()));
-		}
-		return false;
-	}
+            if (!args[0].equalsIgnoreCase("GIVE")) {
+                this.sendMsg(sender, this.config.getSenderUnknowCommand());
+                return true;
+            }
+
+            if (!sender.hasPermission("nodropitem.give")) {
+                this.sendMsg(sender, this.config.getSenderNoPermission());
+                return true;
+            }
+
+            if (Bukkit.getPlayer(args[1]) == null) {
+                this.sendMsg(sender, this.config.getSenderNoPlayerFound());
+                return true;
+            }
+
+            Player receiver = Bukkit.getPlayer(args[1]);
+
+            if (!receiver.isOnline()) {
+                this.sendMsg(sender, this.config.getSenderPlayerNotOnline());
+                return true;
+            }
+
+            if (receiver.getInventory().firstEmpty() < 0) {
+                this.sendMsg(sender, this.config.getSenderInventoryFull());
+                return true;
+            }
+
+            /* Give item */
+            receiver.getInventory().addItem(new NDItem().getSdiItemStack());
+            
+            this.sendMsg(sender, this.config.getSenderCompleted());
+            receiver.sendMessage(StrUtils.convertText(this.config.getReceiverCompleted()));
+            return true;
+        }
+
+        this.sendMsg(sender, this.config.getSenderInvalidUsage());
+        return true;
+    }
+
+    /**
+     * Send message to user of the command.
+     * 
+     * @param sender Who ran the command.
+     * @param msg  Message to send.
+     */
+    public void sendMsg(CommandSender sender, String msg) {
+        if (sender instanceof Player) {
+            sender.sendMessage(StrUtils.convertText(msg));
+        } else {
+            Bukkit.getServer().getConsoleSender().sendMessage(StrUtils.convertText(msg));
+        }
+        
+    }
 }

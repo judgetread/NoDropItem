@@ -1,17 +1,16 @@
 package main.java.com.github.judgetread.NoDropItem.sound;
 
+import main.java.com.github.judgetread.NoDropItem.config.Config;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-
-import main.java.com.github.judgetread.NoDropItem.config.Config;
 
 public class SoundPlayer {
 
 	private static SoundPlayer instance;
-	private boolean enabled;
-	private Sound sound;
-	private float volume;
-	private float pitch;
+	private final boolean enabled;
+	private final Sound sound;
+	private final float volume;
+	private final float pitch;
 	
 	private SoundPlayer() {
 		this.enabled = Config.getInstance().getSoundEnabled();

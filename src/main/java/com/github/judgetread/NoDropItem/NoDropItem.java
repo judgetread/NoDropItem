@@ -4,22 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import main.java.com.github.judgetread.NoDropItem.Listeners.NoDropItemListener;
 import main.java.com.github.judgetread.NoDropItem.commands.CommandManager;
 import main.java.com.github.judgetread.NoDropItem.config.Config;
 import main.java.com.github.judgetread.NoDropItem.recipe.NDRecipe;
 import main.java.com.github.judgetread.NoDropItem.sound.SoundPlayer;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class NoDropItem extends JavaPlugin {
 
 	private static NoDropItem instance;
-	public boolean noErrorsInConfigFiles = true;
+	private boolean noErrorsInConfigFiles = true;
 	private List<UUID> sdiMessagePlayer;
 
 	@Override
@@ -27,12 +25,12 @@ public class NoDropItem extends JavaPlugin {
 		instance = this;
 
 		Config.getInstance();
-		if (!noErrorsInConfigFiles) {
+		if (!this.noErrorsInConfigFiles) {
 			return;
 		}
 		
 		if (Config.getInstance().getEnabled()) {
-			sdiMessagePlayer = new ArrayList<UUID>();
+			this.sdiMessagePlayer = new ArrayList<UUID>();
 			SoundPlayer.getInstance();
 			NDRecipe.getInstance();
 			CommandManager.getInstance();
@@ -51,7 +49,7 @@ public class NoDropItem extends JavaPlugin {
 	}
 
 	public List<UUID> getSdiMessagePlayer() {
-		return sdiMessagePlayer;
+		return this.sdiMessagePlayer;
 	}
 
 	public void debug(String message) {
@@ -63,5 +61,19 @@ public class NoDropItem extends JavaPlugin {
 			}
 		}.runTask(this);
 	}
+
+    /**
+     * @return the noErrorsInConfigFiles
+     */
+    public boolean isNoErrorsInConfigFiles() {
+        return this.noErrorsInConfigFiles;
+    }
+
+    /**
+     * @param noErrorsInConfigFiles the noErrorsInConfigFiles to set
+     */
+    public void setNoErrorsInConfigFiles(boolean noErrorsInConfigFiles) {
+        this.noErrorsInConfigFiles = noErrorsInConfigFiles;
+    }
 
 }

@@ -1,19 +1,17 @@
 package main.java.com.github.judgetread.NoDropItem.items;
 
+import main.java.com.github.judgetread.NoDropItem.config.Config;
+import main.java.com.github.judgetread.NoDropItem.utils.StrUtils;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import main.java.com.github.judgetread.NoDropItem.config.Config;
-import main.java.com.github.judgetread.NoDropItem.utils.StrUtils;
-
 public class NDItem {
 
-	private static NDItem instance;
-	private ItemStack itemStack;
-	private ItemMeta itemMeta;
+	private final ItemStack itemStack;
+	private final ItemMeta itemMeta;
 
-	private NDItem() {
+	public NDItem() {
 		this.itemStack = new ItemStack(Config.getInstance().getItemMaterial());
 		this.itemStack.setAmount(Config.getInstance().getItemAmount());
 		
@@ -21,21 +19,14 @@ public class NDItem {
 		this.itemMeta.setDisplayName(StrUtils.convertText(Config.getInstance().getItemDisplayName()));
 		this.itemMeta.setLore(StrUtils.convertText(Config.getInstance().getItemLore()));
 		
-		for(ItemFlag f :ItemFlag.values()) { itemMeta.addItemFlags(f);}
+		for(ItemFlag f :ItemFlag.values()) { this.itemMeta.addItemFlags(f);}
 		
-		this.itemStack.setItemMeta(itemMeta);
+		this.itemStack.setItemMeta(this.itemMeta);
 		
-	}
-
-	public static NDItem getInstance() {
-		if (instance == null) {
-			instance = new NDItem();
-		}
-		return instance;
 	}
 	
 	public ItemStack getSdiItemStack() {
-		return itemStack;
+		return this.itemStack;
 	}
 	
 	
